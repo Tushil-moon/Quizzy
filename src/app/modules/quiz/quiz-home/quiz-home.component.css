@@ -1,0 +1,77 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+    overflow-y: hidden
+}
+
+.quizlist {
+    overflow: auto;
+    background-color: rgb(246, 246, 246);
+    height: calc(100vh - 80PX);
+}
+
+.main {
+    overflow-y: auto;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+}
+
+.card {
+    border-radius: 5px;
+    border: none;
+}
+
+.card-header {
+    background-color: #666d74;
+}
+
+button.play {
+    background-color: orange;
+}
+
+.noQuiz {
+    height: calc(100vh - 80PX);
+
+    p {
+        color: rgba(234, 153, 3, 0.971);
+    }
+}
+
+.quizlist::-webkit-scrollbar {
+    width: 8px;
+    /* Width of vertical scrollbar */
+    height: 8px;
+    /* Height of horizontal scrollbar */
+}
+
+/* Style for the scrollbar thumb (the draggable part of the scrollbar) */
+.quizlist::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Thumb color */
+    border-radius: 4px;
+    /* Rounded corners for the thumb */
+    border: 2px solid #fff;
+    /* Border around the thumb */
+}
+
+/* Style for the scrollbar when hovered */
+.quizlist::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Change thumb color when hovered */
+}
+
+/* Style for the scrollbar track when hovered */
+.quizlist::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Track color */
+    border-radius: 4px;
+    /* Rounded corners for the track */
+}
+
+/* Style for the scrollbar when the page is scrolled */
+.quizlist::-webkit-scrollbar:vertical {
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Scrollbar background when scrolled */
+}

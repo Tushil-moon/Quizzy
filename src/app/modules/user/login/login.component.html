@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="login-signup d-flex flex-column">
+        <form id="login-form" [formGroup]="loginform" (ngSubmit)="login()">
+            <h2>Login</h2>
+            <div class="mb-3">
+                <input type="email" placeholder="Email" class="m-0 " formControlName="email">
+                @if((submitted() || loginform.get('email')?.invalid) && loginform.get('email')?.touched){
+                <small class="text-danger p-0 m-0">Email required</small>
+                }
+            </div>
+
+            <div class="mb-3">
+                <input type="password" placeholder="Password" class="m-0" formControlName="password">
+                @if((submitted() || loginform.get('password')?.invalid) && loginform.get('password')?.touched){
+                @if(loginform.get('password')?.hasError('required')){
+                <small class="text-danger p-0 m-0">Password required</small>
+                }@else if (loginform.get('password')?.hasError('minlength')) {
+                <small class="text-danger p-0 m-0">Password must be 6 charater long</small>
+                }
+                }
+            </div>
+            <div class="submit mt-3">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <div class="link mt-3">
+            Don't have an account? <span><a [routerLink]="['/signup']" routerLinkActive="router-link-active" >Signup</a></span>
+        </div>
+    </div>
+
+   
+</div>

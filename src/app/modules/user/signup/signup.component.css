@@ -1,0 +1,106 @@
+/* General styling for the login-signup container */
+.login-signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    height: calc(100vh - 80px);
+    /* Add padding for smaller screens */
+    box-sizing: border-box;
+    /* Include padding and border in width calculations */
+}
+
+/* Styling for the form container */
+.login-signup form {
+    width: 100%;
+    /* Full width on small screens */
+    max-width: 400px;
+    /* Set a maximum width for larger screens */
+    padding: 2rem;
+    /* Increase padding for better spacing */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    /* White background for contrast */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for a modern look */
+    box-sizing: border-box;
+}
+
+/* Form title styling */
+.login-signup form h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #333;
+}
+
+/* Input fields styling */
+.login-signup form input {
+    width: 100%;
+    padding: 0.5rem;
+    /* Slightly larger padding for better usability */
+    margin: 0.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Submit button styling */
+.login-signup form button {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #22262b;
+    /* Bootstrap blue for a modern look */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    /* Add a hover effect */
+}
+
+.login-signup form button:hover {
+    background-color: #0a0c0f;
+    /* Darker blue on hover */
+}
+
+.link a{
+    text-decoration: none;
+    color: orange;
+    cursor: pointer;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .login-signup form {
+        padding: 1.5rem;
+    }
+
+    .login-signup form h2 {
+        font-size: 1.25rem;
+    }
+
+    .login-signup form input,
+    .login-signup form button {
+        font-size: 0.9rem;
+        /* Slightly smaller text for smaller screens */
+        padding: 0.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-signup form {
+        padding: 1rem;
+        border: none;
+        /* Remove border for a cleaner mobile look */
+        box-shadow: none;
+    }
+
+    .login-signup form h2 {
+        font-size: 1.1rem;
+    }
+}

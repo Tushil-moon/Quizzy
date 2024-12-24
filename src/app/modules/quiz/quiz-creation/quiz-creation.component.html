@@ -1,0 +1,171 @@
+<div class="container my-3">
+    <form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+        <!-- Submit Button -->
+        <div class="row my-4">
+            <div class="col-6">
+                <h3 class="fs-2">Create Quiz Question</h3>
+            </div>
+            <div class="col-6">
+                <div class="text-end">
+                    <button type="submit" class="btn btn-orange save px-4 text-white">
+                        <i class="bi bi-check-circle"></i> Save Quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow-lg p-2">
+            <div class="card-body">
+                <div class="row p-0 ">
+
+                    <div class="col-6">
+                        <!-- Quiz Title -->
+                        <div class="mb-4">
+                            <label for="quizTitle" class="form-label fw-bold">Quiz Title</label>
+                            <input type="text" id="quizTitle" class="form-control m-0" formControlName="quizTitle"
+                                placeholder="Quiz title">
+                            @if ((submitted() || quizForm.get('quizTitle')?.touched) &&
+                            quizForm.get('quizTitle')?.invalid) {
+                            <small class="text-danger">Title is required</small>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <!-- Quiz Timer -->
+                        <div class="mb-4" formGroupName="quizTimer">
+                            <label for="quizTimer" class="form-label fw-bold">Quiz Timer</label>
+                            <div class="row m-0">
+                                <div class="col-6">
+                                    <input type="number" class="form-control me-2 m-0" placeholder="HH"
+                                        formControlName="hour" name="hour">
+                                    @if ((submitted() || quizForm.get('quizTimer')?.get('hour')?.touched) &&
+                                    quizForm.get('quizTimer')?.get('hour')?.invalid) {
+                                    <span class="text-danger">Hour is required</span>}
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" class="form-control m-0" placeholder="MM"
+                                        formControlName="minute" name="minute">
+                                    @if ((submitted() || quizForm.get('quizTimer')?.get('minute')?.touched) &&
+                                    quizForm.get('quizTimer')?.get('minute')?.invalid) {
+                                    <small class="text-danger">Minute is required</small>}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Description -->
+                <div class="mb-4">
+                    <label for="quizDescription" class="form-label fw-bold">Quiz Description</label>
+                    <input type="text" id="quizDescription" class="form-control m-0" formControlName="quizDescription"
+                        placeholder="Quiz Description">
+                    @if ((submitted() || quizForm.get('quizDescription')?.touched) &&
+                    quizForm.get('quizDescription')?.invalid) {
+                    <small class="text-danger">Description is required</small>
+                    }
+                </div>
+
+            </div>
+        </div>
+
+        <div formArrayName="questions">
+            <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i"
+                class="card shadow-lg mt-3 p-4 mb-2">
+                <div class="row">
+                    <div class="col-12 text-end remove">
+                        <button type="button" (click)="removeQuestion(i)" class=" btn  p-0 m-0 fs-4 text-danger"
+                            *ngIf="questions.length >= 2"><i class="bi bi-trash"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Question Text -->
+                    <div class="mb-4">
+                        <label for="questionText" class="form-label fw-bold">Question : {{i+1}}</label>
+                        <textarea id="questionText" class="form-control m-0" rows="3" formControlName="questionText"
+                            placeholder="Enter your question here"></textarea>
+                        @if ((submitted() || questions.at(i).get('questionText')?.touched )&&
+                        questions.at(i).get('questionText')?.invalid) {
+                        <small class="text-danger p-0 m-0">Question is required</small>
+                        }
+                    </div>
+
+                    <!-- Question Type -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Question Type</label>
+                        <select class="form-select" formControlName="questionType"
+                            (change)="onTypeChange($event.target, i)">
+                            <option value="multiple-choice">Multiple Choice</option>
+                            <option value="true-false">True/False</option>
+                            <option value="short-answer">Short Answer</option>
+                        </select>
+                        @if (submitted() && questions.at(i).get('questionType')?.invalid) {
+                        <small class="text-danger p-0 m-0">Choice is required</small>
+                        }
+                    </div>
+
+                    <!-- Multiple-Choice Options -->
+                    <div *ngIf="isMultipleChoice(i)">
+                        <label class="form-label fw-bold">Options</label>
+                        <div formArrayName="options" class="row">
+                            <div *ngFor="let option of getOptions(i).controls; let j = index" [formGroupName]="j"
+                                class=" col-lg-3 col-md-6 col-12 m-0">
+                                <div class="input-group p-0">
+                                    <span class="input-group-text option-text ">{{ 'Option ' + (j + 1) }}</span>
+                                    <input type="text" class="form-control" formControlName="text"
+                                        placeholder="Option text">
+                                    <span class="input-group-text ">
+                                        <input type="radio" name="isCorrect" [value]="true" formControlName="isCorrect">
+                                    </span>
+                                </div>
+
+                            </div>
+                            @if((submitted() || questions.at(i).get('options')?.touched )&&
+                            questions.at(i).get('options')?.invalid){
+                            <div *ngIf="question.get('options')?.hasError('allTextsRequired')" class="text-danger">
+                                All options must have text.
+                            </div>
+                            <div *ngIf="question.get('options')?.hasError('oneCorrectRequired')" class="text-danger">
+                                At least one option must be marked as correct.
+                            </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- True/False Options -->
+                    <div *ngIf="isTrueFalse(i)">
+                        <label class="form-label fw-bold">Answer</label>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" [value]="true" formControlName="answer">
+                            <label class="form-check-label">True</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" [value]="false" formControlName="answer">
+                            <label class="form-check-label">False</label>
+                        </div>
+                        @if ((submitted() || questions.at(i).get('answer')?.touched )&&
+                        questions.at(i).get('answer')?.invalid) {
+                        <small class="text-danger">Answer is required</small>
+                        }
+                    </div>
+
+                    <!-- Short Answer -->
+                    <div *ngIf="isShortAnswer(i)">
+                        <label for="shortAnswerText" class="form-label fw-bold">Answer</label>
+                        <input type="text" class="form-control" formControlName="answer" placeholder="Enter the answer">
+                        @if ((submitted() || questions.at(i).get('answer')?.touched) &&
+                        questions.at(i).get('answer')?.invalid) {
+                        <small class="text-danger">Answer is required</small>
+                        }
+                    </div>
+
+                    <div class="row mt-3 ">
+                        <div class="col-12 text-end add-q">
+                            <button type="button" class="btn btn-secondary " (click)="addQuestion()"
+                                *ngIf="(i+1) == questions.length">Add Question</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

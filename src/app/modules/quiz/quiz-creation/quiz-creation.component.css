@@ -1,0 +1,68 @@
+.card {
+    border-radius: 5px;
+    border: none;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #666d74;
+}
+
+.input-group-text {
+    background-color: #dbdcdc;
+}
+
+.option-text {
+    font-size: 12px;
+}
+
+.remove {
+    position: absolute;
+    left: -8px;
+    top: 15px;
+}
+
+.add-q {
+    position: absolute;
+    left: -27px;
+    bottom: 11px;
+}
+
+textarea,
+input {
+    font-size: 1rem;
+}
+
+button {
+    font-size: 1.2rem;
+}
+
+button.save {
+    background-color: orange;
+}
+
+.add-q button {
+    font-size: 12px;
+}
+
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.option-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.input-group-text {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-control {
+    margin-bottom: 0.5rem;
+}

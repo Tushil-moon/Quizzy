@@ -1,0 +1,13 @@
+button.create{
+    background-color: orange;
+    margin-left: 10px;
+}
+
+button {
+    color: aliceblue;
+}
+
+.quizzy{
+    text-decoration: none;
+    cursor: pointer;
+}

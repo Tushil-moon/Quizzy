@@ -1,0 +1,396 @@
+{
+  "user": [
+    {
+      "id": "2534",
+      "username": "tushil30",
+      "email": "tushil@gmail.com",
+      "password": "123123",
+      "role": "Admin"
+    },
+    {
+      "id": "884a",
+      "username": "test123",
+      "email": "test@gmail.com",
+      "password": "123123",
+      "role": "User"
+    },
+    {
+      "id": "6675",
+      "username": "tushil@gmail.com",
+      "email": "fef",
+      "password": "123123"
+    },
+    {
+      "id": "b1aa",
+      "username": "123123",
+      "email": "t@b.com",
+      "password": "123123",
+      "role": "User"
+    },
+    {
+      "id": "7d78",
+      "username": "Sjhruti",
+      "email": "shruti@gmail.com",
+      "password": "123123",
+      "role": "User"
+    },
+    {
+      "id": "12ca",
+      "username": "asdcasc",
+      "email": "xyz@gmail.com",
+      "password": "SCSCcascdc",
+      "role": "User"
+    },
+    {
+      "id": "e8d9",
+      "username": "abc",
+      "email": "xyza@gmail.com",
+      "password": "111111",
+      "role": "User"
+    }
+  ],
+  "quiz": [
+    {
+      "id": "28de",
+      "quizTitle": "Mastering Angular Basic",
+      "quizDescription": "Test your understanding of the foundational concepts of Angular! This quiz includes multiple-choice, true/false, and short-answer questions to challenge your knowledge of Angular's core features, architecture, and best practices.",
+      "quizTimer": {
+        "hour": 0,
+        "minute": 10
+      },
+      "questions": [
+        {
+          "questionText": "What is the primary purpose of Angular's Dependency Injection (DI) system?",
+          "questionType": "multiple-choice",
+          "options": [
+            {
+              "text": " To manage HTTP requests",
+              "isCorrect": false
+            },
+            {
+              "text": "To inject styles dynamically",
+              "isCorrect": false
+            },
+            {
+              "text": "To provide a mechanism for managing dependencies and services",
+              "isCorrect": true
+            },
+            {
+              "text": "To compile TypeScript code",
+              "isCorrect": false
+            }
+          ],
+          "answer": ""
+        },
+        {
+          "questionText": "Which of the following is not a feature of Angular?",
+          "questionType": "multiple-choice",
+          "options": [
+            {
+              "text": "Two-way data binding",
+              "isCorrect": false
+            },
+            {
+              "text": " Server-side rendering",
+              "isCorrect": false
+            },
+            {
+              "text": "Virtual DOM",
+              "isCorrect": true
+            },
+            {
+              "text": "Component-based architecture",
+              "isCorrect": false
+            }
+          ],
+          "answer": ""
+        },
+        {
+          "questionText": "Angular's CLI (Command Line Interface) is optional but highly recommended for efficient development.",
+          "questionType": "true-false",
+          "options": [],
+          "answer": true
+        },
+        {
+          "questionText": "The ngFor directive in Angular is used to apply conditional rendering of elements.",
+          "questionType": "true-false",
+          "options": [],
+          "answer": false
+        },
+        {
+          "questionText": "Explain the purpose of Angular's ngOnInit lifecycle hook.",
+          "questionType": "short-answer",
+          "options": [],
+          "answer": "The ngOnInit lifecycle hook is used to perform initialization logic after Angular has initialized the component's input properties and before the component is rendered. It is commonly used to fetch data or set up the component's state."
+        }
+      ]
+    },
+    {
+      "id": "47cd",
+      "quizTitle": "JavaScript Advanced Concepts Quiz",
+      "quizDescription": "This quiz tests your knowledge of advanced JavaScript concepts, including ES6 features, event handling, asynchronous programming, and more. Challenge yourself to see how well you know JavaScript!",
+      "quizTimer": {
+        "hour": 0,
+        "minute": 30
+      },
+      "questions": [
+        {
+          "questionText": "What does the `bind` method do in JavaScript?",
+          "questionType": "multiple-choice",
+          "options": [
+            {
+              "text": "Creates a new function with a bound `this` value",
+              "isCorrect": true
+            },
+            {
+              "text": "Executes a function immediately",
+              "isCorrect": false
+            },
+            {
+              "text": "Attaches an event listener to an element",
+              "isCorrect": false
+            },
+            {
+              "text": "Modifies the scope of variables",
+              "isCorrect": false
+            }
+          ],
+          "answer": ""
+        },
+        {
+          "questionText": "Which method is used to merge two or more arrays in JavaScript?",
+          "questionType": "multiple-choice",
+          "options": [
+            {
+              "text": "concat",
+              "isCorrect": true
+            },
+            {
+              "text": "merge",
+              "isCorrect": false
+            },
+            {
+              "text": "combine",
+              "isCorrect": false
+            },
+            {
+              "text": "append",
+              "isCorrect": false
+            }
+          ],
+          "answer": ""
+        },
+        {
+          "questionText": "JavaScript uses a single-threaded event loop for asynchronous operations.",
+          "questionType": "true-false",
+          "options": [],
+          "answer": true
+        },
+        {
+          "questionText": "The `forEach` method in JavaScript can break out of the loop using `break`.",
+          "questionType": "true-false",
+          "options": [],
+          "answer": false
+        },
+        {
+          "questionText": "Explain the difference between `var`, `let`, and `const` in JavaScript.",
+          "questionType": "short-answer",
+          "options": [],
+          "answer": "`var` is function-scoped and can be redeclared; `let` is block-scoped and cannot be redeclared; `const` is block-scoped and represents constant values that cannot be reassigned."
+        },
+        {
+          "questionText": "Which JavaScript function is used to parse a string into an integer?",
+          "questionType": "multiple-choice",
+          "options": [
+            {
+              "text": "parseInt",
+              "isCorrect": true
+            },
+            {
+              "text": "parseFloat",
+              "isCorrect": false
+            },
+            {
+              "text": "toInteger",
+              "isCorrect": false
+            },
+            {
+              "text": "Number",
+              "isCorrect": false
+            }
+          ],
+          "answer": ""
+        },
+        {
+          "questionText": "What will `typeof null` return in JavaScript?",
+          "questionType": "multiple-choice",
+          "options": [
+            {
+              "text": "`null`",
+              "isCorrect": false
+            },
+            {
+              "text": "`undefined`",
+              "isCorrect": false
+            },
+            {
+              "text": "`object`",
+              "isCorrect": true
+            },
+            {
+              "text": "`boolean`",
+              "isCorrect": false
+            }
+          ],
+          "answer": ""
+        },
+        {
+          "questionText": "JavaScript is a dynamically typed language.",
+          "questionType": "true-false",
+          "options": [],
+          "answer": true
+        },
+        {
+          "questionText": "The `==` operator performs type coercion.",
+          "questionType": "true-false",
+          "options": [],
+          "answer": true
+        },
+        {
+          "questionText": "Describe the purpose of a JavaScript closure.",
+          "questionType": "short-answer",
+          "options": [],
+          "answer": "A closure is a function that remembers and accesses its lexical scope even when it is executed outside that scope."
+        },
+        {
+          "questionText": "What is the purpose of the `finally` block in a `try-catch` statement?",
+          "questionType": "multiple-choice",
+          "options": [
+            {
+              "text": "To execute code regardless of whether an error occurred",
+              "isCorrect": true
+            },
+            {
+              "text": "To log the error message",
+              "isCorrect": false
+            },
+            {
+              "text": "To rethrow the error",
+              "isCorrect": false
+            },
+            {
+              "text": "To define an error handler",
+              "isCorrect": false
+            }
+          ],
+          "answer": ""
+        },
+        {
+          "questionText": "Which method is used to add elements to the beginning of an array?",
+          "questionType": "multiple-choice",
+          "options": [
+            {
+              "text": "unshift",
+              "isCorrect": true
+            },
+            {
+              "text": "push",
+              "isCorrect": false
+            },
+            {
+              "text": "append",
+              "isCorrect": false
+            },
+            {
+              "text": "concat",
+              "isCorrect": false
+            }
+          ],
+          "answer": ""
+        },
+        {
+          "questionText": "JavaScript's `fetch` API is used for making network requests.",
+          "questionType": "true-false",
+          "options": [],
+          "answer": true
+        },
+        {
+          "questionText": "Arrow functions have their own `this` context.",
+          "questionType": "true-false",
+          "options": [],
+          "answer": false
+        },
+        {
+          "questionText": "What is event bubbling in JavaScript?",
+          "questionType": "short-answer",
+          "options": [],
+          "answer": "Event bubbling is the process where an event starts from the deepest element and propagates upwards to its ancestors."
+        },
+        {
+          "questionText": "Which keyword is used to declare an asynchronous function in JavaScript?",
+          "questionType": "multiple-choice",
+          "options": [
+            {
+              "text": "async",
+              "isCorrect": true
+            },
+            {
+              "text": "await",
+              "isCorrect": false
+            },
+            {
+              "text": "promise",
+              "isCorrect": false
+            },
+            {
+              "text": "defer",
+              "isCorrect": false
+            }
+          ],
+          "answer": ""
+        },
+        {
+          "questionText": "The `splice` method in JavaScript modifies the original array.",
+          "questionType": "true-false",
+          "options": [],
+          "answer": true
+        },
+        {
+          "questionText": "What is the purpose of the `Promise.all()` method?",
+          "questionType": "short-answer",
+          "options": [],
+          "answer": "`Promise.all()` is used to wait for all promises in an array to resolve or for one to reject, returning a single promise."
+        },
+        {
+          "questionText": "Which of the following is a way to create a new object in JavaScript?",
+          "questionType": "multiple-choice",
+          "options": [
+            {
+              "text": "Using Object.create()",
+              "isCorrect": false
+            },
+            {
+              "text": "Using a class constructor",
+              "isCorrect": false
+            },
+            {
+              "text": "Using object literals",
+              "isCorrect": false
+            },
+            {
+              "text": "All of the above",
+              "isCorrect": true
+            }
+          ],
+          "answer": ""
+        },
+        {
+          "questionText": "What does the `reduce` method do in JavaScript?",
+          "questionType": "short-answer",
+          "options": [],
+          "answer": "The `reduce` method applies a function to an accumulator and each array element to reduce the array to a single value."
+        }
+      ]
+    }
+  ]
+}
