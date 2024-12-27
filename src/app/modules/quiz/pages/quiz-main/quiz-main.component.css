@@ -1,0 +1,156 @@
+/* quiz-board.component.css */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-height: 300px;
+
+    .card-header {
+        background-color: #6c757d;
+    }
+}
+
+.card-body {
+    margin-left: 25px !important;
+}
+
+button {
+    font-size: 0.8rem;
+    border: none;
+    text-align: center;
+}
+
+button.previous {
+    padding: 0.5rem 0.5rem;
+}
+
+button.next {
+    background-color: orange;
+    padding: 0.5rem 1.3rem;
+}
+
+button.previous i {
+    margin-right: 0.5rem;
+}
+
+button.next i {
+    margin-left: 0.5 !important;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-check-input {
+    border: 0.8px solid orange !important;
+}
+
+.form-check-input:checked {
+    background-color: orange !important;
+    border-color: orange !important;
+}
+
+.full-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.resume {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.result-card {
+    background: #ffffff;
+    height: 80vh;
+   
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+.result-title {
+    font-size: 2rem;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+}
+.result-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .result-image img {
+    display: block;
+} */
+
+.score-text {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.score-section h2 {
+    font-size: 2.5rem;
+    color: orange;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+.attempt-text {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+
+
+.improvement-text {
+    font-size: 1.2rem;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.improvement-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #888;
+}
+
+.improvement-list li {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    color: #fff;
+    border: none;
+    font-weight: bold;
+}
+
+.result-btn{
+    background-color: orange;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    color: #fff;
+}

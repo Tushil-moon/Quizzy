@@ -18,7 +18,6 @@
     /* Set a maximum width for larger screens */
     padding: 2rem;
     /* Increase padding for better spacing */
-    border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #fff;
     /* White background for contrast */
@@ -64,11 +63,15 @@
 }
 
 .login-signup form button:hover {
-    background-color: #0a0c0f;
+    background-color: #494b4e;
     /* Darker blue on hover */
 }
 
-.link a{
+.text-danger {
+    font-size: 12px;
+}
+
+.link a {
     text-decoration: none;
     color: orange;
     cursor: pointer;

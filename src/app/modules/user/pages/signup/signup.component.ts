@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { UserService } from '../../../services/user.service';
+import { UserService } from '../../../../services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -19,8 +19,14 @@ export class SignupComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
 
+  /**
+   * Form submission prevention flag
+   */
   submitted = signal<boolean>(false);
 
+  /**
+   * Form initialization
+   */
   signupform: FormGroup = this.fb.group({
     username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
@@ -28,6 +34,9 @@ export class SignupComponent {
     role: ['User'],
   });
 
+  /**
+   * Handle singup
+   */
   signup(): void {
     if (this.signupform.valid) {
       this.userService.addUser(this.signupform.value).subscribe(() => {

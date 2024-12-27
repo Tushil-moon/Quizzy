@@ -1,0 +1,231 @@
+@if (quizState !== null) {
+    <div class="container mt-4">
+
+        @if(quizState.quizData != null && !quizState.isPaused && !quizState.quizDone){
+        <!-- Back button -->
+        <div class="row">
+            <div class="col-6">
+                <button class="btn btn-secondary previous" (click)="backtoHome()" id="1">
+                    <i class="bi bi-arrow-left"></i> Back
+                </button>
+            </div>
+            <div class="col-6 text-end">
+                <button class="btn btn-secondary next ms-2" (click)="onSubmit()" id="1">
+                    Submit
+                </button>
+                <button class="btn btn-secondary next ms-2" (click)="onPause()" id="1">
+                    Pause
+                </button>
+            </div>
+        </div>
+    
+        <!-- Quiz Details -->
+        <div class="row mt-4">
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <div>Question #</div>
+                        <div class="fs-1"> {{ quizState.currentQuestionIndex + 1 }}</div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <div>Remaining Question</div>
+                        <div class="fs-1">{{quizState.remainingQuestion}}/{{quizState.questions.length}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <div>Score</div>
+                        <div class="fs-1">{{quizState.currentScore}}/{{quizState.questions.length}}</div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <div>Timer</div>
+                        <div class="fs-1">
+                            <app-timer [timer]="quizState.quizTime!" (remainingTime)="remainingTimer($event)"></app-timer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+        <!-- Navigation Buttons -->
+        <div class="row mt-3 ">
+            <div class="col-12 text-end">
+                <button class="btn btn-secondary previous ms-2" [disabled]="quizState.currentQuestionIndex === 0"
+                    (click)="prevQuestion()" id="1">
+                    <i class="bi bi-arrow-left"></i> Previous
+                </button>
+                <button class="btn text-white next ms-2"
+                    [disabled]="quizState.currentQuestionIndex === quizState.questions.length - 1" (click)="nextQuestion()"
+                    id="2">
+                    Next <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    
+        <!-- Question Display -->
+        <div
+            *ngIf="quizState && quizState.questions.length > 0 && quizState.questions[quizState.currentQuestionIndex] as currentQuestion">
+            <div class="card mt-3">
+                <div class="card-header text-white">
+                    Question {{ quizState.currentQuestionIndex + 1 }}
+                </div>
+                <div class="card-body">
+                    <p class="fs-3">Q. {{ currentQuestion.questionText }}</p>
+    
+                    <!-- Multiple Choice -->
+                    <div *ngIf="quizState &&(currentQuestion.questionType === 'multiple-choice')">
+                        <div *ngFor="let option of quizState.currentQue?.options; let i = index" class="fs-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="option" [value]="option"
+                                    id="option-{{ i }}"
+                                    [checked]=" quizState && quizState.selectedAnswers[quizState.currentQuestionIndex]?.selectedAnswer === i"
+                                    (change)="checkAnswer(i)"
+                                    [disabled]="quizState && quizState.selectedAnswers[quizState.currentQuestionIndex]?.isSubmitted" />
+                                <label class="form-check-label" for="option-{{ i }}" [ngClass]="{
+                                        'text-success': quizState && quizState.selectedAnswers[quizState.currentQuestionIndex]?.isCorrect && i === quizState.selectedAnswers[quizState.currentQuestionIndex]?.selectedAnswer || option.isCorrect === quizState.selectedAnswers[quizState.currentQuestionIndex]?.correctAnswer.isCorrect,
+                                        'text-danger': !quizState.selectedAnswers[quizState.currentQuestionIndex]?.isCorrect && i === quizState.selectedAnswers[quizState.currentQuestionIndex]?.selectedAnswer
+                                    }">
+                                    {{ option.text }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- True/False -->
+                    <div *ngIf="currentQuestion.questionType === 'true-false'" class="fs-4">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" [value]="true"
+                                id="true-option-{{ quizState.currentQuestionIndex }}"
+                                name="q{{ quizState.currentQuestionIndex }}"
+                                (change)="checkAnswer(true, currentQuestion.answer)"
+                                [checked]="quizState.selectedAnswers[quizState.currentQuestionIndex]?.selectedAnswer === true"
+                                [disabled]="quizState.selectedAnswers[quizState.currentQuestionIndex]?.isSubmitted" />
+                            <label class="form-check-label" for="true-option-{{ quizState.currentQuestionIndex }}"
+                                [ngClass]="{
+                                        'text-success': (quizState.selectedAnswers[quizState.currentQuestionIndex]?.isCorrect || !quizState.selectedAnswers[quizState.currentQuestionIndex]?.isCorrect) && quizState.selectedAnswers[quizState.currentQuestionIndex]?.correctAnswer === true,
+                                        'text-danger': !quizState.selectedAnswers[quizState.currentQuestionIndex]?.isCorrect && quizState.selectedAnswers[quizState.currentQuestionIndex]?.selectedAnswer === true
+                                    }">
+                                True
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" [value]="false"
+                                id="false-option-{{ quizState.currentQuestionIndex }}"
+                                name="q{{ quizState.currentQuestionIndex }}"
+                                (change)="checkAnswer(false, currentQuestion.answer)"
+                                [checked]="quizState.selectedAnswers[quizState.currentQuestionIndex]?.selectedAnswer === false"
+                                [disabled]="quizState.selectedAnswers[quizState.currentQuestionIndex]?.isSubmitted" />
+                            <label class="form-check-label" for="false-option-{{ quizState.currentQuestionIndex }}"
+                                [ngClass]="{
+                                        'text-success': (quizState.selectedAnswers[quizState.currentQuestionIndex]?.isCorrect || !quizState.selectedAnswers[quizState.currentQuestionIndex]?.isCorrect) && quizState.selectedAnswers[quizState.currentQuestionIndex]?.correctAnswer === false,
+                                        'text-danger': !quizState.selectedAnswers[quizState.currentQuestionIndex]?.isCorrect && quizState.selectedAnswers[quizState.currentQuestionIndex]?.selectedAnswer === false
+                                    }">
+                                False
+                            </label>
+                        </div>
+                    </div>
+    
+                    <!-- Short Answer -->
+                    <div *ngIf="currentQuestion.questionType === 'short-answer'" class="fs-4">
+                        <input type="text" class="form-control" placeholder="Enter the answer"
+                            [value]="quizState.selectedAnswers[quizState.currentQuestionIndex]?.selectedAnswer"
+                            (blur)="checkAnswer(short.value, currentQuestion.answer)"
+                            [disabled]="quizState.selectedAnswers[quizState.currentQuestionIndex]?.isSubmitted" #short />
+                        <span *ngIf="quizState.selectedAnswers[quizState.currentQuestionIndex]?.selectedAnswer">
+                            <small>(Notice: Click away after entering the proper answer!)</small>
+                        </span>
+                        <div *ngIf="quizState.selectedAnswers[quizState.currentQuestionIndex]?.isCorrect"
+                            class="text-success mt-2">
+                            <small>Correct Answer!</small>
+                        </div>
+                        <div *ngIf="quizState.selectedAnswers[quizState.currentQuestionIndex]?.isCorrect === false"
+                            class="text-danger mt-2">
+                            <small>Incorrect! <br>
+                                <small class="text-dark">
+                                    <span class="text-info">The correct answer is:</span> {{ currentQuestion.answer }}
+                                </small>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }@else if(quizState && !quizState.quizDone){
+        <!-- pause screen -->
+        <div class="d-flex justify-content-center align-items-center full-screen">
+            <div class="resume text-center">
+                <h4>Remaining Time: {{formateTime(quizState.remainingTime!)}} minute</h4>
+                <button class="btn btn-secondary next ms-2 mt-3" (click)="onResume()" id="1">
+                    Resume
+                </button>
+            </div>
+        </div>
+        }
+        <!-- Result Screen -->
+        <div class="result-screen" *ngIf="quizState && (quizState.remainingTime === 0 || quizState.quizDone)">
+            <div class="card w-100 p-4 result-card shadow d-flex justify-content-center border-0">
+                <div class="row">
+                    <div class="col-6 d-flex justify-content-center align-items-center">
+                        <div class="result-image ">
+                            <img src="../../../../assets/images/undraw_result_d6p8.svg" class="img-fluid" width="300px">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <h4 class="result-title mb-4">Quiz Result</h4>
+    
+                        <!-- <div class="my-2"><h4>Completion Time: {{formateTime(quizState.quizDoneTime)}}</h4></div> -->
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <div class="score-section">
+                                    <p class="score-text"><strong>Score:</strong></p>
+                                    <h2 class="score">{{quizState.currentScore}}</h2>
+                                </div>
+    
+                                <div class="attempt-section mt-3">
+                                    <p class="attempt-text"><strong>Attempted Questions:</strong></p>
+                                    <h2>
+                                        {{quizState.questions.length -
+                                        quizState.remainingQuestion}}
+                                    </h2>
+                                </div>
+    
+    
+                            </div>
+                            <div class="col-6">
+                                <div class="improvement-section mt-4">
+                                    <p class="improvement-text"><strong>Area of Improvement:</strong></p>
+                                    <ul class="improvement-list">
+                                       @for (item of areaOfImprovement(); track $index) {
+                                        <li>
+                                           @if(item.percentage >= 0 && item.percentage <=25){
+                                            <strong>{{item.type}}</strong> : Very Poor
+                                           }@else if (item.percentage >= 26 && item.percentage <=50) {
+                                            <strong>{{item.type}}</strong> : Poor
+                                           }
+                                           @else if (item.percentage >= 51 && item.percentage <=75) {
+                                            <strong>{{item.type}}</strong> : Good
+                                           }
+                                           @else if (item.percentage >= 76 && item.percentage < 100) {
+                                            <strong>{{item.type}}</strong> : Great
+                                           }
+                                           @else if (item.percentage == 100) {
+                                            <strong>{{item.type}}</strong> : Excellent
+                                           }
+                                        </li>
+                                       }
+                                    </ul>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary mt-4 result-btn" (click)="backtoHome()" id="1">
+                                Go to Home
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

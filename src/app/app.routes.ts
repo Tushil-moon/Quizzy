@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './modules/user/login/login.component';
-import { QuizHomeComponent } from './modules/quiz/quiz-home/quiz-home.component';
-import { SignupComponent } from './modules/user/signup/signup.component';
-import { QuizCreationComponent } from './modules/quiz/quiz-creation/quiz-creation.component';
-import { QuizMainComponent } from './modules/quiz/quiz-main/quiz-main.component';
+import { LoginComponent } from './modules/user/pages/login/login.component';
+import { QuizHomeComponent } from './modules/quiz/pages/quiz-home/quiz-home.component';
+import { SignupComponent } from './modules/user/pages/signup/signup.component';
+import { QuizCreationComponent } from './modules/quiz/pages/quiz-creation/quiz-creation.component';
+import { QuizMainComponent } from './modules/quiz/pages/quiz-main/quiz-main.component';
 import { authGuard } from './guards/auth/auth.guard';
 import { roleGuard } from './guards/role/role.guard';
 import { Roles } from './modules/user/models/roles.enum';

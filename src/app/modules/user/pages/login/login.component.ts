@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../../../services/auth.service';
 import {
   FormBuilder,
   FormGroup,
@@ -7,7 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { UserService } from '../../../services/user.service';
+import { UserService } from '../../../../services/user.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -22,16 +23,25 @@ export class LoginComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
 
+  /**
+   * Hold flag for form submittion
+   */
   submitted = signal<boolean>(false);
 
+  /**
+   * Login form initialization
+   */
   loginform: FormGroup = this.fb.group({
     email: ['', Validators.required],
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
+  /**
+   * Handle login
+   */
   login(): void {
     if (this.loginform.valid) {
-      this.userService.getUser(this.loginform.value.email).subscribe((res) => {
+      this.userService.getUser(this.loginform.value.email).subscribe((res:User[]) => {
         const email = this.loginform.value.email;
         const password = this.loginform.value.password;
         const data = res[0];

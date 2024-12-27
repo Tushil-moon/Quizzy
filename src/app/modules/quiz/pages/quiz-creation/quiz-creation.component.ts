@@ -13,7 +13,7 @@ import {
 } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { BehaviorSubject, tap } from 'rxjs';
-import { QuizService } from '../../../services/quiz.service';
+import { QuizService } from '../../../../services/quiz.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -28,7 +28,7 @@ export class QuizCreationComponent {
   private router = inject(Router);
 
   /**
-   *
+   *  From submittion flag
    */
   submitted = signal<boolean>(false);
 
@@ -196,9 +196,11 @@ export class QuizCreationComponent {
     question.get('answer')?.updateValueAndValidity();
     question.get('options')?.updateValueAndValidity();
   }
+
   /**
+   * Handle option validation
    *
-   * @returns
+   * @returns validator function
    */
   optionValidator(): ValidatorFn {
     return (formArray: AbstractControl): ValidationErrors | null => {

@@ -4,7 +4,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { tap } from 'rxjs';
-import { Roles } from '../../modules/user/models/roles.enum';
+import { User } from '../../modules/user/models/user';
 
 @Component({
   selector: 'app-header',
@@ -15,26 +15,47 @@ import { Roles } from '../../modules/user/models/roles.enum';
 export class HeaderComponent {
   private router = inject(Router);
   private auth = inject(AuthService);
-  user = signal<any>(null);
+
+  /**
+   * hold user data
+   */
+  user = signal<User | null>(null);
+
+  /**
+   * hold user role
+   * 
+   */
   role = signal<string | null>(null);
-  
+
+  /**
+   * Handle user data fetch
+   */
   getUser = toSignal(
     this.auth.$user.pipe(
       tap(() => {
-        const user = this.auth.getUserFromLocal()
-        this.user.set(user);
+        const user = this.auth.getUserFromLocal();
+        this.user.set(user!);
       })
     )
   );
 
+  /**
+   * Handle navigation on login
+   */
   gotologin(): void {
     this.router.navigate(['/login']);
   }
 
+  /**
+   * handle navigation for quiz creation page
+   */
   createQuiz(): void {
     this.router.navigate(['/quiz-create']);
   }
 
+  /**
+   * Handle logout
+   */
   logout(): void {
     localStorage.removeItem('user');
     this.router.navigate(['/home']);

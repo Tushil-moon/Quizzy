@@ -1,9 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
-import { QuizService } from '../../../services/quiz.service';
+import { QuizService } from '../../../../services/quiz.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { Quiz } from '../models/quiz';
+import { Quiz } from '../../models/quiz';
 
 @Component({
   selector: 'app-quiz-home',
@@ -16,12 +16,12 @@ export class QuizHomeComponent {
   private router = inject(Router);
 
   /**
-   *
+   * Store quiz list
    */
   quizes = signal<Quiz[]>([]);
 
   /**
-   *
+   * Fetch wuiz data from quiz service
    */
   getQuizes = toSignal(
     this.quizService.getQuiz().pipe(
@@ -33,7 +33,8 @@ export class QuizHomeComponent {
   );
 
   /**
-   * 
+   * Handlle quiz play button
+   *
    * @param id Quiz id
    */
   play(id: string): void {
