@@ -6,6 +6,8 @@
 /out-tsc
 /bazel-out
 
+/db.json
+
 # Node
 /node_modules
 npm-debug.log
@@ -40,4 +42,4 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-db.json
+
