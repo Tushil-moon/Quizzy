@@ -15,6 +15,8 @@ export class QuizHomeComponent {
   private quizService = inject(QuizService);
   private router = inject(Router);
 
+  loading = signal<boolean>(true)
+
   /**
    * Store quiz list
    */
@@ -27,6 +29,7 @@ export class QuizHomeComponent {
     this.quizService.getQuiz().pipe(
       tap((res: Quiz[]) => {
         this.quizes.set(res);
+        this.loading.set(false)
         console.log(this.quizes());
       })
     )

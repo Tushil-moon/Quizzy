@@ -11,6 +11,10 @@
     height: calc(100vh - 80PX);
 }
 
+.card-text{
+    font-size: 14px;
+}
+
 .main {
     overflow-y: auto;
     padding: 15px;
@@ -74,4 +78,10 @@ button.play {
 .quizlist::-webkit-scrollbar:vertical {
     background-color: rgba(0, 0, 0, 0.1);
     /* Scrollbar background when scrolled */
+}
+
+@media (max-width: 480px) {
+    button.play{
+        font-size: 10px;
+    }
 }

@@ -13,7 +13,7 @@
 }
 
 button {
-    font-size: 0.8rem;
+    font-size: 0.8rem !important;
     border: none;
     text-align: center;
 }
@@ -89,9 +89,9 @@ button:disabled {
     align-items: center;
 }
 
-/* .result-image img {
-    display: block;
-} */
+.result-image img {
+ width: 300px;
+}
 
 .score-text {
     font-size: 1.2rem;
@@ -153,4 +153,11 @@ button:disabled {
 .btn-primary:hover {
     background-color: #0056b3;
     color: #fff;
+}
+
+@media (max-width: 480px) {
+    .result-image img {
+        width: 200px;
+    }
+    
 }

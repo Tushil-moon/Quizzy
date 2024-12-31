@@ -35,6 +35,13 @@ export class SignupComponent {
   });
 
   /**
+   * Handle navigate to home
+   */
+  gotoHome(): void {
+    this.router.navigate(['home']);
+  }
+
+  /**
    * Handle singup
    */
   signup(): void {

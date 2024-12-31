@@ -12,7 +12,9 @@ export class UserService {
   /**
    * Actuall api to perform every request
    */
-  private readonly apiUrl = 'http://192.168.1.177:3000/user';
+  // private readonly apiUrl = 'http://192.168.1.177:3000/user';
+  private readonly apiUrl = 'https://csdrq1zf-3000.inc1.devtunnels.ms/user';
+
 
   /**
    * Find user details

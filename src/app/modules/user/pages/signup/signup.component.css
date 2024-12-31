@@ -18,7 +18,7 @@
     /* Set a maximum width for larger screens */
     padding: 2rem;
     /* Increase padding for better spacing */
-    border: 1px solid #ddd;
+    border: none;
     border-radius: 8px;
     background-color: #fff;
     /* White background for contrast */
@@ -73,6 +73,16 @@
     color: orange;
     cursor: pointer;
 }
+button {
+    font-size: 1rem;
+    border: none;
+    text-align: center;
+}
+.back-button{
+ position: absolute;
+ top: 80px;
+}
+
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {

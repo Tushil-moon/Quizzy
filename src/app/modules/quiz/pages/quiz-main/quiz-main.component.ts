@@ -6,7 +6,7 @@ import { filter, tap } from 'rxjs';
 import { Options, Result } from '../../models/quiz';
 import { TimerComponent } from '../../components/timer/timer.component';
 import { FormsModule } from '@angular/forms';
-import { initialQuizState, QuizState } from '../../store/quiz.state';
+import { QuizState } from '../../store/quiz.state';
 import { Store } from '@ngrx/store';
 import * as QuizActions from '../../store/quiz.actions';
 
@@ -17,9 +17,9 @@ import * as QuizActions from '../../store/quiz.actions';
   styleUrl: './quiz-main.component.css',
 })
 export class QuizMainComponent {
-  private store = inject(Store<QuizState>);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private store = inject(Store<QuizState>);
 
   /**
    * Selector for quiz data
@@ -181,7 +181,7 @@ export class QuizMainComponent {
   }
 
   /**
-   * Handle result summary
+   * Handle Area of improvement in result screen
    */
   areaOfImprovement(): Result[] {
     const resultMap = this.quizState!.selectedAnswers.reduce(

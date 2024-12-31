@@ -12,7 +12,9 @@ export class QuizService {
   /**
    * Actuall api to perform every request
    */
-  private readonly apiUrl = 'http://192.168.1.177:3000/quiz';
+  // private readonly apiUrl = 'http://192.168.1.177:3000/quiz';
+  private readonly apiUrl = 'https://csdrq1zf-3000.inc1.devtunnels.ms/quiz';
+
 
   /**
    * Handle quiz fetch

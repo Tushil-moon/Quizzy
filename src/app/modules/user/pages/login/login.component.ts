@@ -17,11 +17,10 @@ import { User } from '../../models/user';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  private userService = inject(UserService);
   private authService = inject(AuthService);
-
   private fb = inject(FormBuilder);
   private router = inject(Router);
+  private userService = inject(UserService);
 
   /**
    * Hold flag for form submittion
@@ -37,24 +36,36 @@ export class LoginComponent {
   });
 
   /**
+   * Handle navigate to home
+   */
+  gotoHome(): void {
+    this.router.navigate(['home']);
+  }
+
+  /**
    * Handle login
    */
   login(): void {
     if (this.loginform.valid) {
-      this.userService.getUser(this.loginform.value.email).subscribe((res:User[]) => {
-        const email = this.loginform.value.email;
-        const password = this.loginform.value.password;
-        const data = res[0];
-        if (data.email === email && data.password === password) {
-          localStorage.setItem('user', JSON.stringify(res[0]));
-          this.router.navigate(['/home']);
-          this.authService.$user.next(true);
-        } else {
-          console.log('wrong credential');
-          this.loginform.markAllAsTouched();
-          this.submitted.set(true);
-        }
-      });
+      this.userService
+        .getUser(this.loginform.value.email)
+        .subscribe((res: User[]) => {
+          const email = this.loginform.value.email;
+          const password = this.loginform.value.password;
+          const data = res[0];
+          if (data.email === email && data.password === password) {
+            localStorage.setItem('user', JSON.stringify(res[0]));
+            this.router.navigate(['/home']);
+            this.authService.$user.next(true);
+          } else {
+            console.log('wrong credential');
+            this.loginform.markAllAsTouched();
+            this.submitted.set(true);
+          }
+        });
+    } else {
+      this.loginform.markAllAsTouched();
+      this.submitted.set(true);
     }
   }
 }

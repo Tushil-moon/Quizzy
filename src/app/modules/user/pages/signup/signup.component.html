@@ -1,21 +1,28 @@
 <div class="container">
+    <div class="back-button mt-2">
+        <div class="">
+            <button class="btn btn-secondary rounded-5 px-4" (click)="gotoHome()">
+                <i class="bi bi-arrow-left-circle-fill me-2"></i>Back
+            </button>
+        </div>
+    </div>
     <div class="login-signup d-flex flex-column">
         <form id="signup-form" [formGroup]="signupform" (ngSubmit)="signup()">
             <h2>Sign Up</h2>
             <div class="mb-3">
-                <input type="text" placeholder="Username" formControlName="username" class="m-0">
+                <input type="text" placeholder="Username" formControlName="username" class="m-0" autocomplete="username">
                 @if((submitted() || signupform.get('username')?.touched) && signupform.get('username')?.invalid){
                 <small class="text-danger p-0 m-0">Username required</small>
                 }
             </div>
             <div class="mb-3">
-                <input type="email" placeholder="Email" formControlName="email" class="m-0">
+                <input type="email" placeholder="Email" formControlName="email" class="m-0" autocomplete="email">
                 @if((submitted() || signupform.get('email')?.touched) && signupform.get('email')?.invalid){
                 <small class="text-danger p-0 m-0">Email required</small>
                 }
             </div>
             <div class="mb-3">
-                <input type="password" placeholder="Password" formControlName="password" class="m-0">
+                <input type="password" placeholder="Password" formControlName="password" class="m-0" autocomplete="new-password">
                 @if((submitted() || signupform.get('password')?.touched) && signupform.get('password')?.invalid){
                 @if(signupform.get('password')?.hasError?.('required')){
                 <small class="text-danger p-0 m-0">Password required</small>

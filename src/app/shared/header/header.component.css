@@ -11,3 +11,14 @@ button {
     text-decoration: none;
     cursor: pointer;
 }
+
+@media (max-width: 480px) {
+    button.create{
+        font-size: 10px;
+        margin-left: 0px;
+    }
+    .username{
+        font-size: 14px;
+    }
+    
+}

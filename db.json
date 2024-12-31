@@ -47,6 +47,13 @@
       "email": "xyza@gmail.com",
       "password": "111111",
       "role": "User"
+    },
+    {
+      "id": "f5bc",
+      "username": "12",
+      "email": "12@gmail.com",
+      "password": "123456",
+      "role": "User"
     }
   ],
   "quiz": [
@@ -389,6 +396,115 @@
           "questionType": "short-answer",
           "options": [],
           "answer": "The `reduce` method applies a function to an accumulator and each array element to reduce the array to a single value."
+        }
+      ]
+    },
+    {
+      "id": "0d91",
+      "quizTitle": " Y bdun idm ",
+      "quizDescription": "Ywxb7enx83bx5enz7enxyen7x",
+      "quizTimer": {
+        "hour": 0,
+        "minute": 15
+      },
+      "questions": [
+        {
+          "questionText": "Ex uenx8enxr",
+          "questionType": "multiple-choice",
+          "options": [
+            {
+              "text": "F ",
+              "isCorrect": false
+            },
+            {
+              "text": "Tv",
+              "isCorrect": false
+            },
+            {
+              "text": "Tv",
+              "isCorrect": true
+            },
+            {
+              "text": "Tv",
+              "isCorrect": false
+            }
+          ],
+          "answer": ""
+        },
+        {
+          "questionText": "Ceg g",
+          "questionType": "true-false",
+          "options": [],
+          "answer": true
+        },
+        {
+          "questionText": "F ge ge rg ",
+          "questionType": "short-answer",
+          "options": [],
+          "answer": "Rvcrc"
+        }
+      ]
+    },
+    {
+      "id": "3700",
+      "quizTitle": "EFEFEF",
+      "quizDescription": "ASREGHS ARHSERHSZEHSERHSERER SERHSER HS ERHE RHSERH ",
+      "quizTimer": {
+        "hour": -1,
+        "minute": 23
+      },
+      "questions": [
+        {
+          "questionText": "S RHSERH SER HSER ",
+          "questionType": "multiple-choice",
+          "options": [
+            {
+              "text": "HSE HSE",
+              "isCorrect": false
+            },
+            {
+              "text": " RHSE",
+              "isCorrect": true
+            },
+            {
+              "text": "R HSER ",
+              "isCorrect": false
+            },
+            {
+              "text": "HS",
+              "isCorrect": false
+            }
+          ],
+          "answer": ""
+        },
+        {
+          "questionText": " SERHSE RHSE RH",
+          "questionType": "true-false",
+          "options": [],
+          "answer": true
+        },
+        {
+          "questionText": " SERH SERHSRTJH SERH SERH ",
+          "questionType": "short-answer",
+          "options": [],
+          "answer": "RHRH"
+        }
+      ]
+    },
+    {
+      "id": "e804",
+      "quizTitle": "HTH",
+      "quizDescription": "THTH",
+      "quizTimer": {
+        "hour": 0,
+        "minute": 1
+      },
+      "questions": [
+        {
+          "questionText": "TH",
+          "questionType": "true-false",
+          "options": [],
+          "answer": true
         }
       ]
     }

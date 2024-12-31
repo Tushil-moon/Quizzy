@@ -12,13 +12,28 @@ export class TimerService {
   private store = inject(Store<QuizState>);
 
   /**
-   *
+   * selector for quiz state
    */
   quizData$ = this.store.select((state) => state.quiz);
+
+  /**
+   * hold timer data
+   */
   timer = new BehaviorSubject<number>(0);
+
+  /**
+   * hold timer start flag
+   */
   startTimer$ = new BehaviorSubject<boolean>(false);
+
+  /**
+   * hold left time
+   */
   timeLeft = new BehaviorSubject<string>('00:00');
 
+  /**
+   * Timer interval
+   */
   timer$ = toSignal(
     this.startTimer$.pipe(
       filter((start) => !!start),
@@ -36,15 +51,16 @@ export class TimerService {
           } else {
             clearInterval(intervalId);
           }
-        }, 1000);
+        }, 400);
       })
     )
   );
 
   /**
+   * Hnadle time formatting
    *
-   * @param seconds
-   * @returns
+   * @param seconds seconds
+   * @returns timer string
    */
   private formatTime(seconds: number): string {
     const minutes = Math.floor(seconds / 60);
@@ -53,9 +69,10 @@ export class TimerService {
   }
 
   /**
+   * Handle zero padding in timer
    *
-   * @param value
-   * @returns
+   * @param value time
+   * @returns string
    */
   private padZero(value: number): string {
     return value < 10 ? `0${value}` : `${value}`;

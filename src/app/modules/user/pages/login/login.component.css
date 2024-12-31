@@ -94,6 +94,15 @@
         padding: 0.3rem;
     }
 }
+button {
+    font-size: 1rem;
+    border: none;
+    text-align: center;
+}
+.back-button{
+ position: absolute;
+ top: 80px;
+}
 
 @media (max-width: 480px) {
     .login-signup form {
