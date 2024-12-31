@@ -99,6 +99,9 @@ button {
     border: none;
     text-align: center;
 }
+.back{
+    font-size: 16px;
+}
 .back-button{
  position: absolute;
  top: 80px;
@@ -106,10 +109,13 @@ button {
 
 @media (max-width: 480px) {
     .login-signup form {
-        padding: 1rem;
+        padding: 3rem;
         border: none;
         /* Remove border for a cleaner mobile look */
         box-shadow: none;
+    }
+    .back{
+        font-size: 12px;
     }
 
     .login-signup form h2 {

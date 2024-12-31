@@ -66,3 +66,10 @@ button.save {
 .form-control {
     margin-bottom: 0.5rem;
 }
+
+@media (max-width: 480px) {
+    .save{
+        font-size: 12px;
+    }
+}
+

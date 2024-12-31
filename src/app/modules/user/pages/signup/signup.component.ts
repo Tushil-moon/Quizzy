@@ -7,10 +7,11 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../../../services/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink,CommonModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })

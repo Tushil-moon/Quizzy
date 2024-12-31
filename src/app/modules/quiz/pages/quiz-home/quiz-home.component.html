@@ -1,6 +1,6 @@
 <div class="container">
    
-    @if(quizes().length > 0 && !loading()){
+    @if(quizes().length > 0){
     <div class="row py-3 border-bottom">
         <div class="col-12 fs-lg-2 fs-4">
             Latest quizes
@@ -38,11 +38,11 @@
         }
     </div>
     }
-    @else if(quizes().length == 0 && !loading()) {
+    @else if(quizes().length == 0) {
     <div class="noQuiz d-flex justify-content-center align-items-center">
         <div class="row">
             <div class="col-12 text-center noPic">
-                <img src="assets/images/undraw_quick-chat_3gj8.svg" alt="" width="400px">
+                <img src="assets/images/undraw_quick-chat_3gj8.svg" alt="" >
             </div>
             <div class="col-12 fs-4 text-center">
                 No quiz available
@@ -51,11 +51,11 @@
         </div>
     </div>
     }
-    @if(loading()){
+    <!-- @if(loading()){
         <div class="d-flex justify-content-center align-items-center vh-100">
             <div class="spinner-grow text-warning " role="status">
                 <span class="sr-only"></span>
             </div>
         </div>
-    }
+    } -->
 </div>
